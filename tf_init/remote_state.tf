@@ -35,7 +35,10 @@ resource "aws_s3_bucket_versioning" "remote_state" {
     status = "Enabled"
   }
 }
-
+resource "aws_s3_bucket_acl" "remote_state" {
+  bucket = aws_s3_bucket.remote_state.id
+  acl    = "private"
+}
 output "remote_state_bucket" {
   value = aws_s3_bucket.remote_state.id
 }
@@ -64,5 +67,9 @@ resource "aws_s3_bucket_versioning" "remote_state_logging" {
   versioning_configuration {
     status = "Enabled"
   }
+}
+resource "aws_s3_bucket_acl" "remote_state_logging" {
+  bucket = aws_s3_bucket.remote_state_logging.id
+  acl    = "private"
 }
 
