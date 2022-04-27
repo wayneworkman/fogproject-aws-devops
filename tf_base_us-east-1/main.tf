@@ -11,8 +11,7 @@ provider "aws" {
   region = var.region
   default_tags {
     tags = {
-      project = "common"
+      project = "common-us-east-1"
     }
   }
 }
-
